@@ -1,0 +1,139 @@
+hydra:
+  run:
+    dir: /root/autodl-tmp/model/av_hubert/avhubert/model/finetune_large_vox_433h_av
+  sweep:
+    dir: ???
+    subdir: ${hydra.job.config_name}__${hydra.job.override_dirname}
+  hydra_logging:
+    version: 1
+    formatters:
+      simple:
+        format: '[%(asctime)s][HYDRA] %(message)s'
+    handlers:
+      console:
+        class: logging.StreamHandler
+        formatter: simple
+        stream: ext://sys.stdout
+    root:
+      level: INFO
+      handlers:
+      - console
+    loggers:
+      logging_example:
+        level: DEBUG
+    disable_existing_loggers: false
+  job_logging:
+    version: 1
+    formatters:
+      simple:
+        format: '[%(asctime)s][%(name)s][%(levelname)s] - %(message)s'
+    handlers:
+      console:
+        class: logging.StreamHandler
+        formatter: simple
+        stream: ext://sys.stdout
+      file:
+        class: logging.FileHandler
+        formatter: simple
+        filename: ${hydra.job.name}.log
+    root:
+      level: INFO
+      handlers:
+      - console
+      - file
+    disable_existing_loggers: false
+  sweeper:
+    _target_: hydra._internal.core_plugins.basic_sweeper.BasicSweeper
+    max_batch_size: null
+  launcher:
+    _target_: hydra._internal.core_plugins.basic_launcher.BasicLauncher
+  help:
+    app_name: ${hydra.job.name}
+    header: '${hydra.help.app_name} is powered by Hydra.
+
+      '
+    footer: 'Powered by Hydra (https://hydra.cc)
+
+      Use --hydra-help to view Hydra specific help
+
+      '
+    template: '${hydra.help.header}
+
+      == Configuration groups ==
+
+      Compose your configuration from those groups (group=option)
+
+
+      $APP_CONFIG_GROUPS
+
+
+      == Config ==
+
+      Override anything in the config (foo.bar=value)
+
+
+      $CONFIG
+
+
+      ${hydra.help.footer}
+
+      '
+  hydra_help:
+    hydra_help: ???
+    template: 'Hydra (${hydra.runtime.version})
+
+      See https://hydra.cc for more info.
+
+
+      == Flags ==
+
+      $FLAGS_HELP
+
+
+      == Configuration groups ==
+
+      Compose your configuration from those groups (For example, append hydra/job_logging=disabled
+      to command line)
+
+
+      $HYDRA_CONFIG_GROUPS
+
+
+      Use ''--cfg hydra'' to Show the Hydra config.
+
+      '
+  output_subdir: .hydra
+  overrides:
+    hydra:
+    - hydra.run.dir=/root/autodl-tmp/model/av_hubert/avhubert/model/finetune_large_vox_433h_av
+    task:
+    - task.data=/root/autodl-tmp/data/mlavt_tedx/es/200h_data
+    - task.label_dir=/root/autodl-tmp/data/mlavt_tedx/es/200h_data
+    - task.tokenizer_bpe_model=/root/autodl-tmp/data/mlavt_tedx/es/spm1000/spm_unigram1000.model
+    - model.w2v_path=/root/autodl-tmp/model/av_hubert/avhubert/checkpoints/large_vox_iter5.pt
+    - common.user_dir=/root/autodl-tmp/model/av_hubert/avhubert
+  job:
+    name: hydra_train
+    override_dirname: common.user_dir-/root/autodl-tmp/model/av_hubert/avhubert__task.tokenizer_bpe_model-/root/autodl-tmp/data/mlavt_tedx/es/spm1000/spm_unigram1000.model
+    id: ???
+    num: ???
+    config_name: large_vox_433h_av.yaml
+    env_set: {}
+    env_copy: []
+    config:
+      override_dirname:
+        kv_sep: '-'
+        item_sep: __
+        exclude_keys:
+        - run
+        - task.data
+        - task.label_dir
+        - model.w2v_path
+        - dataset.train_subset
+        - dataset.valid_subset
+        - criterion.wer_kenlm_model
+        - criterion.wer_lexicon
+  runtime:
+    version: 1.0.7
+    cwd: /root/autodl-tmp/model/av_hubert/avhubert
+  verbose: false

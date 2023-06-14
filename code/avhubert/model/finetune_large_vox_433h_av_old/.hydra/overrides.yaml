@@ -1,0 +1,5 @@
+- task.data=/root/autodl-tmp/data/mlavt_tedx/es/200h_data
+- task.label_dir=/root/autodl-tmp/data/mlavt_tedx/es/200h_data
+- task.tokenizer_bpe_model=/root/autodl-tmp/data/mlavt_tedx/es/spm1000/spm_unigram1000.model
+- model.w2v_path=/root/autodl-tmp/model/av_hubert/avhubert/checkpoints/large_vox_iter5.pt
+- common.user_dir=/root/autodl-tmp/model/av_hubert/avhubert

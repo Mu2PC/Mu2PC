@@ -1,0 +1,5 @@
+Looking in indexes: https://mirrors.aliyun.com/pypi/simple/
+Collecting opencv-contrib-python
+  Using cached https://mirrors.aliyun.com/pypi/packages/8c/ee/d37c3758bd279943353a706d774dbeebf3848a751d96a5a85bc1528cba0b/opencv-contrib-python-4.7.0.72.tar.gz (150.5 MB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'canceled'
