@@ -7,7 +7,6 @@ We provide link of [Google Drive](https://drive.google.com/file/d/1wzyzwXdaKmJUa
 ### Dependencies
 * [PyTorch](http://pytorch.org/) version >= 1.5.0
 * Python version >= 3.6
-* For training new models, you'll also need an NVIDIA GPU and [NCCL](https://github.com/NVIDIA/nccl)
 * **To install fairseq version 1.0.0a0** and develop locally:
 ``` bash
 pip install --editable ./
