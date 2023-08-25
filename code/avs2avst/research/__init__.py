@@ -1,0 +1,3 @@
+from research.AVTranslation.model import AV_xm_transformer
+from research.AVTranslation.task import AV_speech_to_text
+from research.AVTranslation.dependency import hubert_pretraining, hubert
